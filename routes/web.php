@@ -25,6 +25,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\InstitutionsController;
 use App\Http\Controllers\LoanProductsController;
 
@@ -67,4 +68,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/loanproducts/store', [loanproductsController::class, 'store'])->name('loanproducts.store');
 	Route::get('/loanproducts/edit/{id}', [loanproductsController::class, 'edit'])->name('loanproducts.edit');
 	Route::put('/loanproducts/update/{id}', [loanproductsController::class, 'update'])->name('loanproducts.update');
+
+	Route::get('/expenses/index', [ExpensesController::class, 'index'])->name('expenses.index');
+	Route::get('/expenses/create', [expensesController::class, 'create'])->name('expenses.create');
+	Route::post('/expenses/store', [expensesController::class, 'store'])->name('expenses.store');
+	Route::get('/expenses/edit/{id}', [expensesController::class, 'edit'])->name('expenses.edit');
+	Route::put('/expenses/update/{id}', [expensesController::class, 'update'])->name('expenses.update');
 });
