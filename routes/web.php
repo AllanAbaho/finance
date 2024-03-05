@@ -25,6 +25,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\InstitutionsController;
 
 Route::get('/', function () {
 	return redirect('/dashboard');
@@ -53,4 +54,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/customers/store', [CustomersController::class, 'store'])->name('customers.store');
 	Route::get('/customers/edit/{id}', [CustomersController::class, 'edit'])->name('customers.edit');
 	Route::put('/customers/update/{id}', [CustomersController::class, 'update'])->name('customers.update');
+
+	Route::get('/institutions/index', [InstitutionsController::class, 'index'])->name('institutions.index');
+	Route::get('/institutions/create', [institutionsController::class, 'create'])->name('institutions.create');
+	Route::post('/institutions/store', [institutionsController::class, 'store'])->name('institutions.store');
+	Route::get('/institutions/edit/{id}', [institutionsController::class, 'edit'])->name('institutions.edit');
+	Route::put('/institutions/update/{id}', [institutionsController::class, 'update'])->name('institutions.update');
 });
