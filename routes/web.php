@@ -26,6 +26,7 @@ use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\InstitutionsController;
+use App\Http\Controllers\LoanProductsController;
 
 Route::get('/', function () {
 	return redirect('/dashboard');
@@ -60,4 +61,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/institutions/store', [institutionsController::class, 'store'])->name('institutions.store');
 	Route::get('/institutions/edit/{id}', [institutionsController::class, 'edit'])->name('institutions.edit');
 	Route::put('/institutions/update/{id}', [institutionsController::class, 'update'])->name('institutions.update');
+
+	Route::get('/loanproducts/index', [LoanProductsController::class, 'index'])->name('loanproducts.index');
+	Route::get('/loanproducts/create', [loanproductsController::class, 'create'])->name('loanproducts.create');
+	Route::post('/loanproducts/store', [loanproductsController::class, 'store'])->name('loanproducts.store');
+	Route::get('/loanproducts/edit/{id}', [loanproductsController::class, 'edit'])->name('loanproducts.edit');
+	Route::put('/loanproducts/update/{id}', [loanproductsController::class, 'update'])->name('loanproducts.update');
 });
